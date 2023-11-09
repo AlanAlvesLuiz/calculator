@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hank</title>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            background-color: rgb(47, 47, 106);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: azure;
+        }
+        form{
+            width: 80%;
+            height: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+        .inputs-form{
+            width: 90%;
+            height: 80%;
+            text-align: center;
+        }
+
+        ::-webkit-input-placeholder {
+            color: white;
+        }
+
+        .inputs-form input{
+            margin: 5px;
+            border-radius: 100px;
+            width: 90%;
+            height: 15%;
+            padding-left: 10px;
+            font-size: 25px;
+            text-align: center;
+            background-color: rgb(62, 62, 135);
+            color: aliceblue;
+        }
+
+
+        
+        .btn:hover{
+            cursor: pointer;
+            background-image: linear-gradient(to right, rgba(21, 0, 255, 0.714) , rgba(0, 255, 102, 0.652));
+            margin: 9px;
+            width: 91%;
+            height: 16%;
+            font-size: 30px;
+        }
+
+        form > .inputs-form > .resp{
+            width: 98%;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <form onsubmit="calcularHank(); return false;">
+        
+        <div class="inputs-form">
+            <h1></h1>
+            <input type="text" id="victorias" placeholder="Digite suas Vitórias"><br>
+            <input type="text" id="derrotas" placeholder="Digite suas Derrotas"><br><br>
+
+            <input type="submit" value="OK" class="btn"><br>
+
+            A resposta é: <br>
+            <input type="text" id="resp" class="resp" readonly>
+
+        </div>
+        
+
+    </form>
+
+    <script>
+        const elements = document.querySelectorAll("btn")
+        elements.
+        forEach(e => {
+            e.onclick = function() { alert(e.value) }
+        })
+        function calcularHank() {
+            let victorias = parseInt(document.getElementById("victorias").value) || 0;
+            let derrotas = parseInt(document.getElementById("derrotas").value) || 0;
+
+            let conta = derrotas - victorias;
+            let result = conta * -1;
+
+            if (result < 10) {
+                document.getElementById("resp").value = "O Herói tem o saldo de " + result + " e está no Hank FERRO";
+            } else if (result >= 11 && result <= 20) {
+                document.getElementById("resp").value = "O Herói tem o saldo de " + result + " e está no Hank BRONZE";
+            } else if (result >= 21 && result <= 50) {
+                document.getElementById("resp").value = "O Herói tem o saldo de " + result + " e está no Hank PRATA";
+            } else if (result >= 51 && result <= 80) {
+                document.getElementById("resp").value = "O Herói tem o saldo de " + result + " e está no Hank OURO";
+            } else if (result >= 81 && result <= 90) {
+                document.getElementById("resp").value = "O Herói tem o saldo de " + result + " e está no Hank DIAMANTE";
+            } else if (result >= 91 && result <= 100) {
+                document.getElementById("resp").value = "O Herói tem o saldo de " + result + " e está no Hank LENDÁRIO";
+            } else if (result >= 101) {
+                document.getElementById("resp").value = "O Herói tem o saldo de " + result + " e está no Hank IMORTAL";
+            } else {
+                console.log("Indefinido");
+            }
+        }
+    </script>
+</body>
+</html>
